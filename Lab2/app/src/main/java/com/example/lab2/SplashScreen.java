@@ -2,30 +2,19 @@ package com.example.lab2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.ImageView;
+
+import java.net.URL;
 
 public class SplashScreen extends AppCompatActivity {
 
+    final private String LINK = "https://api.vk.com/method/friends.get?user_ids=anton0330&fields=first_name&count=100&v=5.8&access_token=9a763b3bbb20066cd777f1853a477ca7d1227c1d2846996d84b9517a9d7237378ece3dc1c482240afc218";
     private boolean flag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-
-        int orientation = this.getResources().getConfiguration().orientation;
-
-        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
-            new DownloadImage((ImageView) findViewById(R.id.imageView)).execute("https://images.wallpaperscraft.ru/image/kosmos_kosmicheskoe_prostranstvo_svet_blesk_94206_1080x1920.jpg");
-        } else {
-            new DownloadImage((ImageView) findViewById(R.id.imageView)).execute("https://cdn.wallpaperhi.com/2560x1440/20120607/outer%20space%20gods%202560x1440%20wallpaper_www.wallpaperhi.com_7.jpg");
-        }
-
     }
 
     @Override
@@ -33,19 +22,14 @@ public class SplashScreen extends AppCompatActivity {
         super.onResume();
 
         if (!flag) {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        Thread.sleep(8000);
-                    } catch (Exception e) {
-                        Log.d("myLog", "exception");
-                    }
-                    Intent intent = new Intent(SplashScreen.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-            }).start();
+            URL url = null;
+            try {
+                url = new URL(LINK);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            new VKQueryTaskList(this).execute(url);
         }
     }
 

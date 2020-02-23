@@ -6,14 +6,16 @@
             android:shape="rectangle">
             <corners android:radius="6dp"/>
             <solid android:color="@color/brownPressed"/>
+
         </shape>
     </item>
 
     <item>
         <shape
             android:shape="rectangle">
-            <corners android:radius="6dp"/>
-            <solid android:color="@color/brown"/>
+            <corners android:radius="6dp" />
+            <solid android:color="@color/brown" />
+
         </shape>
     </item>
 </selector>

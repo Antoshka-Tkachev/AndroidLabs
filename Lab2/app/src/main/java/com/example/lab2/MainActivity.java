@@ -4,12 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private RecyclerAdapter adapter;
+    private VKListAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,8 +25,20 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true); //Тк знаем размер списка
 
-        adapter = new RecyclerAdapter(1000000, this);
-        //recyclerView.scrollToPosition(789541);
+
+        adapter = new VKListAdapter(100, this);
+
         recyclerView.setAdapter(adapter);
+
+
     }
+
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        Log.d("position",String.valueOf(VKPagerAdapter.pos));
+//        recyclerView.scrollToPosition(VKPagerAdapter.pos);
+//    }
+
 }

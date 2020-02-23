@@ -10,6 +10,9 @@ import java.util.Scanner;
 
 public class VKConnect {
 
+    public static String[] name;
+    public static String[] id;
+
     public static String query(URL url) throws IOException {
 
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();

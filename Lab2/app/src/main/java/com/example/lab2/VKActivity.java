@@ -16,11 +16,12 @@ public class VKActivity extends AppCompatActivity {
         setContentView(R.layout.activity_vk);
 
         ViewPager viewPager = findViewById(R.id.viewPager);
-        VKAdapter vkAdapter = new VKAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        VKPagerAdapter vkAdapter = new VKPagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         Intent intent = getIntent();
 
-        Log.d("myLog", String.valueOf(intent.getIntExtra("position", 0)));
+        //Log.d("myLog", String.valueOf(intent.getIntExtra("position", 0)));
         viewPager.setAdapter(vkAdapter);
         viewPager.setCurrentItem(intent.getIntExtra("position", 0));
     }
+
 }

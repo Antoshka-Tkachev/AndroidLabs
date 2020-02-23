@@ -1,10 +1,6 @@
 package com.example.lab2;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,17 +10,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Scanner;
 
-public class VKQueryTask extends AsyncTask<URL, Void, String> {
+public class VKQueryTaskInfoUser extends AsyncTask<URL, Void, String> {
 
-    private URL url;
     private View view;
 
-    public VKQueryTask(View view) {
+    public VKQueryTaskInfoUser(View view) {
         this.view = view;
     }
 
@@ -36,15 +28,12 @@ public class VKQueryTask extends AsyncTask<URL, Void, String> {
             e.printStackTrace();
         }
 
-
         return response;
     }
 
     protected void onPostExecute(String response) {
-        TextView textPosition = view.findViewById(R.id.textPosition);
         TextView textName = view.findViewById(R.id.textName);
 
-        String id = "Null";
         String firstName;
         String lastName;
         String resultName = "NoName";
@@ -55,7 +44,6 @@ public class VKQueryTask extends AsyncTask<URL, Void, String> {
             JSONArray jsonArray = jsonResponse.getJSONArray("response");
             JSONObject user = jsonArray.getJSONObject(0);
 
-            id = user.getString("id");
             firstName = user.getString("first_name");
             lastName = user.getString("last_name");
             photo = user.getString("photo_max_orig");
@@ -66,7 +54,6 @@ public class VKQueryTask extends AsyncTask<URL, Void, String> {
             e.printStackTrace();
         }
 
-        textPosition.setText(id);
         textName.setText(resultName);
 
         if (photo != null) {
