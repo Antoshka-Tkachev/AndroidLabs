@@ -13,6 +13,7 @@ public class VKActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("myLog", "VKActivity.oncreate");
         setContentView(R.layout.activity_vk);
 
         ViewPager viewPager = findViewById(R.id.viewPager);

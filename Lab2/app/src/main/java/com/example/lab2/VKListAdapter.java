@@ -1,5 +1,6 @@
 package com.example.lab2;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -11,10 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class VKListAdapter extends RecyclerView.Adapter<VKListAdapter.MyViewHolder>{
 
+    private Singleton singleton = Singleton.getInstance();
     private int size;
-    private Context context;
+    private Activity context;
 
-    public VKListAdapter(int size, Context context) {
+    public VKListAdapter(int size, Activity context) {
         this.size = size;
         this.context = context;
     }
@@ -70,7 +72,7 @@ public class VKListAdapter extends RecyclerView.Adapter<VKListAdapter.MyViewHold
                 textView.setBackgroundResource(R.drawable.background_text_view_recycler2);
             }
 
-            textView.setText(VKConnect.name[position]);
+            textView.setText(singleton.name[position]);
         }
 
     }

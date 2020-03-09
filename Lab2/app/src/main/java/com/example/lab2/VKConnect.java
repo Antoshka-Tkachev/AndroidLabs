@@ -1,7 +1,5 @@
 package com.example.lab2;
 
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -9,9 +7,6 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class VKConnect {
-
-    public static String[] name;
-    public static String[] id;
 
     public static String query(URL url) throws IOException {
 

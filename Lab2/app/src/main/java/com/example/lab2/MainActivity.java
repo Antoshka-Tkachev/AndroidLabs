@@ -34,11 +34,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        Log.d("position",String.valueOf(VKPagerAdapter.pos));
-//        recyclerView.scrollToPosition(VKPagerAdapter.pos);
-//    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("position",String.valueOf(VKPagerAdapter.pos));
+        recyclerView.scrollToPosition(VKPagerAdapter.pos);
+    }
 
 }
